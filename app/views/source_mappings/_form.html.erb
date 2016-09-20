@@ -1,0 +1,32 @@
+<%= form_for(source_mapping) do |f| %>
+  <% if source_mapping.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(source_mapping.errors.count, "error") %> prohibited this source_mapping from being saved:</h2>
+
+      <ul>
+      <% source_mapping.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name, 'Name' %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :source_id, 'Data Source' %>
+    <%= f.select(:source_id, DbConnection.all.map{|d| [d.name, d.id]} + [['CSV', 0]], { include_blank: true }, { class: "form-control" }) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :destination_id, 'Data Destination' %>
+    <%= f.select(:destination_id, DbConnection.all.map{|d| [d.name, d.id]} + [['CSV', 0]], { include_blank: true }, { class: "form-control" }) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Submit', class: 'btn btn-primary' %>
+  </div>
+<% end %>

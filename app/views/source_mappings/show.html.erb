@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @source_mapping.source_id %>
+</p>
+
+<p>
+  <strong>Destination:</strong>
+  <%= @source_mapping.destination_id %>
+</p>
+
+<%= link_to 'Edit', edit_source_mapping_path(@source_mapping) %> |
+<%= link_to 'Back', source_mappings_path %>

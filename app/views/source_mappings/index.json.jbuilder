@@ -1,0 +1,1 @@
+json.array! @source_mappings, partial: 'source_mappings/source_mapping', as: :source_mapping

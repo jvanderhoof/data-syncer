@@ -1,0 +1,1 @@
+json.partial! "source_mappings/source_mapping", source_mapping: @source_mapping

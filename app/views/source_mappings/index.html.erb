@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Source Mappings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Source</th>
+      <th>Destination</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @source_mappings.each do |source_mapping| %>
+      <tr>
+        <td><%= source_mapping.source_id %></td>
+        <td><%= source_mapping.destination_id %></td>
+        <td><%= link_to 'Show', source_mapping %></td>
+        <td><%= link_to 'Edit', edit_source_mapping_path(source_mapping) %></td>
+        <td><%= link_to 'Destroy', source_mapping, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Source Mapping', new_source_mapping_path %>

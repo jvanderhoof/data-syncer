@@ -1,0 +1,49 @@
+<div class="row">
+  <h1>Data Mapper</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-3 dataSource">
+    <h3>Data Source</h3>
+    <%= select_tag(:source_tables, options_for_select(@source_mapping.source.table_list.map{|d| [d, d]}), include_blank: true, class: "form-control dataSourceTableSelect") %>
+    <% @source_mapping.source.tables_and_columns.each do |table, columns| %>
+      <div class="card hidden" id="table-<%= table %>">
+        <div class="card-block">
+          <h4 class="card-title"><%= table %></h4>
+          <ul class="list-group">
+            <% columns.sort{|x,y| x[:column_name] <=> y[:column_name] }.each do |column| %>
+              <li  class="list-group-item">
+                <%= check_box_tag("#{table}[#{column[:column_name]}]", column[:column_name], false, class: 'sourceColumn') %>
+                <%= column[:column_name] %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-md-6">
+    <h3>Data Translation</h3>
+    <table class="table dataTranslations">
+      <thead>
+        <tr>
+          <th>From</th>
+          <th>To</th>
+          <th>Transformation</th>
+          <th>Example</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-md-3 csvFile">
+    <h3>CSV File</h3>
+    <div class="csvColumns">
+    </div>
+    <%= button_tag 'Add Column', class: 'addCsvColumnButton' %>
+  </div>
+
+</div>

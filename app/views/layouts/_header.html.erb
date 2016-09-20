@@ -1,0 +1,21 @@
+<nav class="navbar navbar-dark bg-inverse"> <!-- navbar-fixed-top -->
+  <%= link_to "Data Syncer", root_path, class: "navbar-brand" %>
+  <ul class="nav navbar-nav">
+
+    <li class="nav-item <%= "active" if current_page?(controller: 'db_connections') %>">
+      <%= link_to db_connections_path, class: ["nav-link"] do %>
+        Data Connections <% if current_page?(controller: 'db_connections') %> <span class="sr-only">(current)</span> <% end %>
+      <% end %>
+    </li>
+    <li class="nav-item <%= "active" if current_page?(controller: 'source_mappings') %>">
+      <%= link_to source_mappings_path, class: ["nav-link"] do %>
+        Source Mappings <% if current_page?(controller: 'source_mappings') %> <span class="sr-only">(current)</span> <% end %>
+      <% end %>
+    </li>
+
+
+    <!-- <li class="nav-item">
+      <a class="nav-link" href="#">About</a>
+    </li> -->
+  </ul>
+</nav>

@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-md-12">
+    <h1><%= @db_connection.name %> Tables</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <ul class="list-group">
+    <% @db_connection.tables_and_columns.each_with_index do |(table, columns), index| %>
+      <li class="list-group-item" id="table<%= index %>">
+        <h5>
+        <a class="collapsed" data-toggle="collapse" href="#tableColumns<%= index %>" aria-expanded="false" aria-controls="tableColumns<%= index %>">
+          <%= table %>
+        </a>
+      </h5>
+      </li>
+      <li class="list-group-item">
+        <ul class="list-group collapse" id="tableColumns<%= index %>" role="tabpanel" aria-labelledby="table<%= index %>">
+          <% columns.each do |column| %>
+            <li  class="list-group-item"><%= column[:column_name] %> (<%= column[:data_type] %>)</li>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
+    </ul>
+  </div>
+</div>
